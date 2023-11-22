@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.example.game.R
 import com.example.game.databinding.FragmentHomePageBinding
+import kotlin.math.floor
+import kotlin.math.sqrt
 
 class HomePageFragment : Fragment() {
 
@@ -31,17 +33,16 @@ class HomePageFragment : Fragment() {
 
     private fun listener() = with(binding) {
         btnStartGame.setOnClickListener {
-            if (!edMatrix.text.isNullOrEmpty() && edMatrix.text.toString().toInt() > 8 && edMatrix.text.toString().toInt() < 25) {
-                countBtn = edMatrix.text.toString()
+
+            if (!edMatrix.text.isNullOrEmpty() && sqrt(edMatrix.text.toString().toDouble()).isFinite()) {
+                val doubleCount = sqrt(edMatrix.text.toString().toDouble()).toInt().toString()
+                countBtn = doubleCount.toInt().toString()
+
 
                 val bundle = Bundle()
                 bundle.putString("requestKey", countBtn)
                 val fragment = StartedFragment()
                 fragment.arguments = bundle
-
-//                requireActivity().supportFragmentManager.setFragmentResult(
-//
-//                )
 
 
                 parentFragmentManager

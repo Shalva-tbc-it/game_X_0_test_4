@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/btn"
-    android:layout_width="20dp"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_margin="1dp"
     android:background="@drawable/btn_corner">
 
     <androidx.appcompat.widget.AppCompatTextView

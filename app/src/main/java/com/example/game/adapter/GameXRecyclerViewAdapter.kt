@@ -2,6 +2,7 @@ package com.example.game.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -31,15 +32,21 @@ class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.Gam
     inner class GameXViewHolder(private val binding: RecyclerviewGameBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind() {
+            val game = currentList[adapterPosition]
             binding.tvGame.text = " "
             binding.root.setOnClickListener {
-                if (number == 0) {
-                    binding.tvGame.text = "0"
-                    number++
-                }else {
-                    binding.tvGame.text = "X"
-                    number--
+                if (!game.isXOrO) {
+                    if (number == 0) {
+                        binding.tvGame.text = "0"
+                        number++
+                        game.isXOrO = true
+                    }else {
+                        binding.tvGame.text = "X"
+                        number--
+                        game.isXOrO = true
+                    }
                 }
+
             }
         }
     }
