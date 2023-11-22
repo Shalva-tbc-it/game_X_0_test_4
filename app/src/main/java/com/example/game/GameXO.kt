@@ -6,7 +6,7 @@ import java.util.UUID
 
 @Parcelize
 data class GameXO(
-    val id: UUID = UUID.randomUUID(),
+    var id: UUID = UUID.randomUUID(),
     val game: GAME_X_OR_O,
     var isXOrO: Boolean = false
 ) : Parcelable

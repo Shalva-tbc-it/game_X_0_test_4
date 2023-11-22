@@ -34,14 +34,19 @@ class HomePageFragment : Fragment() {
             if (!edMatrix.text.isNullOrEmpty() && edMatrix.text.toString().toInt() > 8 && edMatrix.text.toString().toInt() < 25) {
                 countBtn = edMatrix.text.toString()
 
-                requireActivity().supportFragmentManager.setFragmentResult(
-                    "requestKey",
-                    bundleOf("bundleKey" to countBtn)
-                )
+                val bundle = Bundle()
+                bundle.putString("requestKey", countBtn)
+                val fragment = StartedFragment()
+                fragment.arguments = bundle
+
+//                requireActivity().supportFragmentManager.setFragmentResult(
+//
+//                )
+
 
                 parentFragmentManager
                     .beginTransaction()
-                    .replace(R.id.container, StartedFragment())
+                    .replace(R.id.container, fragment)
                     .addToBackStack("Info")
                     .commit()
             }

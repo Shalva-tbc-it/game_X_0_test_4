@@ -16,9 +16,10 @@ class StartedFragment : Fragment() {
 
 
     private lateinit var adapter: GameXRecyclerViewAdapter
-    private lateinit var countBtn: MutableList<GameXO>
+    private var countBtn: MutableList<GameXO> = mutableListOf()
     private var _binding: FragmentStartedBinding? = null
     private val binding get() = _binding!!
+//    private var list = mutableListOf<GameXO>()
     private var count : Int = 0
 
     override fun onCreateView(
@@ -31,8 +32,7 @@ class StartedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getCounter()
-
+        arguments?.let { getCounter(it) }
     }
 
     private fun recyclerViewInit() {
@@ -42,30 +42,33 @@ class StartedFragment : Fragment() {
         adapter.setData(countBtn)
     }
 
-    private fun getCounter() {
-        parentFragmentManager.setFragmentResultListener(
-            "requestKey",
-            viewLifecycleOwner
-        ) { _, bundle ->
+    private fun getCounter(bundle: Bundle) {
 
-            val result =
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    bundle.getParcelable("bundleKey", GameXO::class.java)
-                } else {
-                    bundle.getParcelable("bundleKey")
-                }
+            val result = bundle.getString("requestKey", "1")
+
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                    bundle.getString("bundleKey", GameXO::class.java)
+//                } else {
+//                    bundle.getParcelable("bundleKey")
+//                }
 
             result?.let {
-                count = it.toString().toInt()
-                while (countBtn.size < it.toString().toInt()) {
-                    countBtn.add(
+                val list = ArrayList<GameXO>()
+
+                while (count < it.toString().toInt() * it.toInt()) {
+                    list.add(
                         GameXO(
                             game = GAME_X_OR_O.X
                         )
                     )
+                    count++
+                    if (list.size == it.toInt()) {
+                        recyclerViewInit()
+                        adapter.setData(countBtn)
+                    }
                 }
+                countBtn.addAll(list)
             }
-        }
     }
 
 

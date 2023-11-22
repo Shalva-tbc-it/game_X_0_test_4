@@ -27,6 +27,7 @@ class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.Gam
 
 
     inner class GameXViewHolder(private val binding: RecyclerviewGameBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind() {
             binding.tvGame.text
         }
