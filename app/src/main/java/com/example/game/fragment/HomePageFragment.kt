@@ -34,7 +34,7 @@ class HomePageFragment : Fragment() {
     private fun listener() = with(binding) {
         btnStartGame.setOnClickListener {
 
-            if (!edMatrix.text.isNullOrEmpty() && sqrt(edMatrix.text.toString().toDouble()).isFinite()) {
+            if (!edMatrix.text.isNullOrEmpty() && sqrt(edMatrix.text.toString().toDouble()).isFinite() ) {
                 val doubleCount = sqrt(edMatrix.text.toString().toDouble()).toInt().toString()
                 countBtn = doubleCount.toInt().toString()
 

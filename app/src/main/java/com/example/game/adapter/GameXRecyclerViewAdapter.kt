@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.game.GAME_X_OR_O
 import com.example.game.GameXO
 import com.example.game.databinding.RecyclerviewGameBinding
+import kotlin.math.sqrt
 
 class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.GameXViewHolder>( object :
     DiffUtil.ItemCallback<GameXO>() {
@@ -29,6 +30,7 @@ class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.Gam
     }
 
 
+
     inner class GameXViewHolder(private val binding: RecyclerviewGameBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind() {
@@ -46,7 +48,6 @@ class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.Gam
                         game.isXOrO = true
                     }
                 }
-
             }
         }
     }
