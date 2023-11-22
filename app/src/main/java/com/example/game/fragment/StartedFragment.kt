@@ -1,6 +1,5 @@
 package com.example.game.fragment
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,7 +18,6 @@ class StartedFragment : Fragment() {
     private var countBtn: MutableList<GameXO> = mutableListOf()
     private var _binding: FragmentStartedBinding? = null
     private val binding get() = _binding!!
-//    private var list = mutableListOf<GameXO>()
     private var count : Int = 0
 
     override fun onCreateView(
@@ -46,11 +44,6 @@ class StartedFragment : Fragment() {
 
             val result = bundle.getString("requestKey", "1")
 
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//                    bundle.getString("bundleKey", GameXO::class.java)
-//                } else {
-//                    bundle.getParcelable("bundleKey")
-//                }
 
             result?.let {
                 val list = ArrayList<GameXO>()

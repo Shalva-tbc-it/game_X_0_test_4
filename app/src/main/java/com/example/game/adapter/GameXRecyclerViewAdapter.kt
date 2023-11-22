@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.game.GAME_X_OR_O
 import com.example.game.GameXO
 import com.example.game.databinding.RecyclerviewGameBinding
 
@@ -21,6 +22,7 @@ class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.Gam
 }
 ) {
 
+    private var number = 0
     fun setData(game: MutableList<GameXO>) {
         submitList(game)
     }
@@ -29,7 +31,16 @@ class GameXRecyclerViewAdapter: ListAdapter<GameXO, GameXRecyclerViewAdapter.Gam
     inner class GameXViewHolder(private val binding: RecyclerviewGameBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind() {
-            binding.tvGame.text
+            binding.tvGame.text = " "
+            binding.root.setOnClickListener {
+                if (number == 0) {
+                    binding.tvGame.text = "0"
+                    number++
+                }else {
+                    binding.tvGame.text = "X"
+                    number--
+                }
+            }
         }
     }
 
